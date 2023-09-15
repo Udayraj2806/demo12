@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(){
+   int k;
+    cin>>k;
+    string s;
+    cin>>s;
+    int strSize=s.size();
+    unordered_map<char,int>m;
+    if((strSize%k)!=0)
+    {
+        cout<<-1;
+        return;
+    }
+    int sizeOfKStr=strSize/k;
+    for(auto ele:s){
+        m[ele]++;
+    }
+      if(m.size()>sizeOfKStr){
+        cout<<-1;
+        return;
+    }
+    string demo="";
+    for(auto ele:m)
+    {
+        if((ele.second%k)!=0)
+        {
+            cout<<-1;
+            return;
+        }
+        else{
+            int rem=ele.second/k;
+            for(int i=0;i<rem;i++){
+                demo+=ele.first;
+            }
+        }
+    }
+    string ans="";
+    for(int i=0;i<k;i++){
+        ans+=demo;
+    }
+    cout<<ans;
+}
+
+int main() {
+    int t;
+    t=1;
+    while(t--)
+    {
+        solve();
+        cout<<"\n";
+    }
+}
